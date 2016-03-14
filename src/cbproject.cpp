@@ -566,7 +566,7 @@ CString CCodeBlocksProject::ToolChainSuffix(const int ToolChainIndex, CCodeBlock
 }
 
 bool CCodeBlocksProject::GenerateMakefile
-(const CString& FileName, CCodeBlocksBuildConfig& Config)
+(const CString& FileName, CCodeBlocksBuildConfig& Config, const CString& WorkspaceName)
 {
     m_Dependencies.Clear();
 // setup decorated target names
@@ -635,6 +635,8 @@ bool CCodeBlocksProject::GenerateMakefile
         // macros
         CString line = pl->EvalWorkDir();
         m_Makefile.AddMacro(STR_WRKDIR,line,section);
+        m_Makefile.AddMacro("WORKSPACE_NAME", WorkspaceName, section);
+        m_Makefile.AddMacro("PROJECT_NAME", m_Title, section);
         section++;
         // declare environment variables
         if (m_Environment.GetCount()) {

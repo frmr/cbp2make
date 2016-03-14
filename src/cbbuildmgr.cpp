@@ -79,7 +79,7 @@ void CCodeBlocksBuildManager::Show(void)
 void CCodeBlocksBuildManager::GenerateMakefile(const CString& FileName)
 {
     if (m_ProjectLoaded) {
-        m_Project.GenerateMakefile(FileName,m_Config);
+        m_Project.GenerateMakefile(FileName,m_Config,"TEST");
     }
     if (m_WorkspaceLoaded) {
         m_Workspace.GenerateMakefile(FileName,m_Config);

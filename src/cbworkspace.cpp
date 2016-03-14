@@ -258,7 +258,7 @@ bool CCodeBlocksWorkspace::GenerateMakefile
         makefile_pathname = MakeNativePath(makefile_pathname);
         //std::cout<<"cwd "<<cwd.GetCString()<<std::endl;
         //std::cout<<"gen_makefile "<<makefile_pathname.GetCString()<<std::endl;
-        m_Units[i]->m_Project.GenerateMakefile(makefile_pathname,Config);
+        m_Units[i]->m_Project.GenerateMakefile(makefile_pathname,Config,m_Title);
     }
 // generate workspace makefile
     int active_platforms = 0;
@@ -297,6 +297,7 @@ bool CCodeBlocksWorkspace::GenerateMakefile
         CString line = pl->EvalWorkDir();
         m_Makefile.AddMacro("WRKDIR",line,section);
         m_Makefile.AddMacro("MAKE",pl->Tool_Make(),section);
+        //m_Makefile.AddMacro("WORKSPACE_NAME", m_Title, section);
         section++;
         // targets
         CMakefileRule& rule_all = m_Makefile.AddRule("all",section);
@@ -371,7 +372,7 @@ void CCodeBlocksWorkspace::GenerateMakefileText(const CString& FileName,
         m_MakefileNames.Insert(makefile_name);
         makefile_pathname = MakeNativePath(makefile_pathname);
         //std::cout<<"Native makefile pathname: "<<makefile_pathname.GetCString()<<std::endl;
-        m_Units[i]->m_Project.GenerateMakefile(makefile_pathname,Config);
+        m_Units[i]->m_Project.GenerateMakefile(makefile_pathname,Config,m_Title);
     }
 //CString cwd = GetCurrentDir();
 // generate workspace makefile

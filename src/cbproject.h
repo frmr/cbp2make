@@ -88,7 +88,7 @@ public:
     static CString DecorateTargetName(const CString& TargetName, const int Case = 2);
     CString ToolChainSuffix(const int ToolChainIndex, CCodeBlocksBuildConfig& Config);
     //bool GenerateMakefileText(const CString& FileName, CCodeBlocksBuildConfig& Config);
-    bool GenerateMakefile(const CString& FileName, CCodeBlocksBuildConfig& Config);
+    bool GenerateMakefile(const CString& FileName, CCodeBlocksBuildConfig& Config, const CString& WorkspaceName);
 public:
     CCodeBlocksProject(void);
     ~CCodeBlocksProject(void);
